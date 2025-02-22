@@ -21,8 +21,29 @@ public class Producto {
         this.nombre = nombre;
         return nombre;
     }
+    public String getNombre() {
+        return nombre;
+    }
+    public String setCodigo(String codigo) {
+        this.codigo = codigo;
+        return codigo;
+    }
     public String getCodigo() {
         return codigo;
+    }
+    public double setPrecio(double precio) {
+        this.precio = precio;
+        return precio;
+    }
+    public double getPrecio() {
+        return precio;
+    }
+    public String setCaducidad(String caducidad) {
+        this.caducidad = caducidad;
+        return caducidad;
+    }
+    public String getCaducidad() {
+        return caducidad;
     }
 
 }

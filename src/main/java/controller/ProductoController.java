@@ -1,12 +1,12 @@
 package controller;
-import service.ProductoService;
 import modelos.Producto;
+import service.ProductoService;
 public class ProductoController {
 
     ProductoService servicio = new ProductoService();
 
-    public Producto agregarProducto(String nombreProducto, String codigo, String precio, String cantidad, String categoria){
-        return servicio.agregarProducto (nombreProducto, codigo, precio, cantidad, categoria);
+    public Producto agregarProducto(String nombre, String codigo, double precio, int stock, String caducidad){
+        return servicio.agregarProducto(nombre, codigo, precio, stock, caducidad);
     }
     public void buscarProducto(String codigo){
         servicio.buscarProducto(codigo);

@@ -2,11 +2,11 @@ package modelos;
 
 public class Producto {
 
-    String nombre;
-    String codigo;
-    double precio;
-    String caducidad;
-    int stock;
+    private String nombre;
+    private String codigo;
+    private double precio;
+    private String caducidad;
+    private int stock;
 
     public Producto(String nombre, String codigo, double precio, String caducidad, int stock) {
         this.nombre = nombre;
@@ -17,33 +17,42 @@ public class Producto {
     }
     
     // Getters y Setters
-    public String setNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
-        return nombre;
     }
     public String getNombre() {
         return nombre;
     }
-    public String setCodigo(String codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
-        return codigo;
     }
+
     public String getCodigo() {
         return codigo;
     }
-    public double setPrecio(double precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
-        return precio;
     }
     public double getPrecio() {
         return precio;
     }
-    public String setCaducidad(String caducidad) {
+    public void setCaducidad(String caducidad) {
         this.caducidad = caducidad;
-        return caducidad;
     }
     public String getCaducidad() {
         return caducidad;
+    }
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    public int getStock() {
+        return stock;
+    }
+    public void restarStock(int cantidad) {
+        this.stock -= cantidad;
+    }
+    public String toString() {
+        return "Nombre: " + nombre + "\nCodigo: " + codigo + "\nPrecio: " + precio + "\nCaducidad: " + caducidad + "\nStock: " + stock;
     }
 
 }

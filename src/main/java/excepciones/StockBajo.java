@@ -1,7 +1,7 @@
 package excepciones;
 
-public class StockBajo {
-    public StockBajo(String mensaje) extends RuntimeException {
+public class StockBajo extends RuntimeException {
+    public StockBajo(String mensaje)  {
         super(mensaje);
     }
 }

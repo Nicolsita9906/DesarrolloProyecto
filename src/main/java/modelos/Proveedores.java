@@ -58,6 +58,7 @@ this.categoriaProductos = categoriaProductos;
     public String getCategoriaProductos() {
         return categoriaProductos;
     }
+    @Override
     public String toString() {
         return "Nombre del Proveedor: " + nombreProveedor + "\nCodigo: " + codigo + "\nEmpresa: " + empresa + "\nTelefono: " + telefono + "\nCantidad de Productos Ingresados: " + cantidadProductosIngresados + "\nCategoria de Productos: " + categoriaProductos;
     }

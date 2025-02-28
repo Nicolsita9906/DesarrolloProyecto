@@ -1,14 +1,14 @@
 package modelos;
-
+import java.time.LocalDate;
 public class Producto {
 
     private String nombre;
     private String codigo;
     private double precio;
-    private String caducidad;
+    private LocalDate caducidad;
     private int stock;
 
-    public Producto(String nombre, String codigo, double precio, String caducidad, int stock) {
+    public Producto(String nombre, String codigo, double precio, LocalDate caducidad, int stock) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.precio = precio;
@@ -36,10 +36,10 @@ public class Producto {
     public double getPrecio() {
         return precio;
     }
-    public void setCaducidad(String caducidad) {
+    public void setCaducidad(LocalDate caducidad) {
         this.caducidad = caducidad;
     }
-    public String getCaducidad() {
+    public LocalDate getCaducidad() {
         return caducidad;
     }
     public void setStock(int stock) {
@@ -48,9 +48,8 @@ public class Producto {
     public int getStock() {
         return stock;
     }
-    public void restarStock(int cantidad) {
-        this.stock -= cantidad;
-    }
+    
+    @Override
     public String toString() {
         return "Nombre: " + nombre + "\nCodigo: " + codigo + "\nPrecio: " + precio + "\nCaducidad: " + caducidad + "\nStock: " + stock;
     }

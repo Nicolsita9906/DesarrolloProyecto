@@ -1,6 +1,7 @@
 package service;
-import modelos.Proveedores;
 import java.util.ArrayList;
+
+import modelos.Proveedores;
 public class ProveedoresService {
     ArrayList<Proveedores> proveedores = new ArrayList<>();
     public void agregarProveedor(String nombreProveedor, String codigo, String empresa, String telefono, int cantidadProductosIngresados, String categoriaProductos){
@@ -12,6 +13,7 @@ public class ProveedoresService {
                 proveedores.add(prov);
                 System.out.println("Proveedor agregado con exito");
             }
+            
             break;
         }
     }

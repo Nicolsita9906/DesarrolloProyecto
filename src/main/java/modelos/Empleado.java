@@ -1,10 +1,10 @@
 package modelos;
 import java.time.LocalDate;
 public class Empleado {
-String nombreEmpleado;
-String codigo;
-String numeroDocuemento;
-LocalDate fechaIngreso;
+private String nombreEmpleado;
+private String codigo;
+private String numeroDocuemento;
+private LocalDate fechaIngreso;
 public Empleado(String nombreEmpleado, String codigo, String numeroDocuemento, LocalDate fechaIngreso) {
 this.nombreEmpleado = nombreEmpleado;
 this.codigo = codigo;
@@ -40,6 +40,7 @@ this.fechaIngreso = fechaIngreso;
     public LocalDate getFechaIngreso() {
         return fechaIngreso;
     }
+    @Override
     public String toString() {
         return "Nombre: " + nombreEmpleado + "\nCodigo: " + codigo + "\nNumero de Documento: " + numeroDocuemento + "\nFecha de Ingreso: " + fechaIngreso;
     }

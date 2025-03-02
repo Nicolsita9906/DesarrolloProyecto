@@ -7,38 +7,42 @@ public class ProveedoresService {
         for(Proveedores proveedor : proveedores){
             if(proveedor.getCodigo().equals(codigo)){
                 System.out.println("El código ya existe en el sistema");
-            }else{
-                Proveedores prov = new Proveedores(nombreProveedor, codigo, empresa, telefono, cantidadProductosIngresados, categoriaProductos);
-                proveedores.add(prov);
-                System.out.println("Proveedor agregado con exito");
+                return;  
             }
-            
-            break;
         }
+        Proveedores prov = new Proveedores(nombreProveedor, codigo, empresa, telefono, cantidadProductosIngresados, categoriaProductos);
+        proveedores.add(prov);
+        System.out.println("Proveedor agregado con éxito");
     }
+    
     public void eliminarProveedor(String codigo){
-        for(Proveedores proveedor : proveedores){
+        for (Proveedores proveedor : proveedores){
             if(proveedor.getCodigo().equals(codigo)){
                 proveedores.remove(proveedor);
-                System.out.println("Proveedor eliminado con exito");
-            }else{
-                System.out.println("El código no existe en el sistema");
+                System.out.println("Proveedor eliminado con éxito");
+                return;  
             }
-            break;
         }
+        System.out.println("El código no existe en el sistema");
     }
+    
     public void buscarProveedres(String codigo){
+        boolean encontrado = false;
         for(Proveedores proveedor : proveedores){
             if(proveedor.getCodigo().equals(codigo)){
                 System.out.println(proveedor.toString());
-            }else{
-                System.out.println("El código no existe en el sistema");
+                encontrado = true;
+                break;  
             }
-            break;
+        }
+        if (!encontrado) {
+            System.out.println("El código no existe en el sistema");
         }
     }
+    
     public void modificarProveedor(String codigo, String newName, String newCode, String newEmpresa, String newTelefono, int newCantidad, String newCategoria){
-        for(Proveedores proveedor : proveedores){
+        boolean encontrado = false;
+        for (Proveedores proveedor : proveedores){
             if(proveedor.getCodigo().equals(codigo)){
                 proveedor.setNombreProveedor(newName);
                 proveedor.setCodigo(newCode);
@@ -46,13 +50,16 @@ public class ProveedoresService {
                 proveedor.setTelefono(newTelefono);
                 proveedor.setCantidadProductosIngresados(newCantidad);
                 proveedor.setCategoriaProductos(newCategoria);
-                System.out.println("Proveedor modificado con exito");
-            }else{
-                System.out.println("El código no existe en el sistema");
+                System.out.println("Proveedor modificado con éxito");
+                encontrado = true;
+                break;  
             }
-            break;
+        }
+        if (!encontrado) {
+            System.out.println("El código no existe en el sistema");
         }
     }
+    
     public void listarProveedores(){
         if(proveedores.isEmpty()){
             System.out.println("No hay proveedores en el sistema");

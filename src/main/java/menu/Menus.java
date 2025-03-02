@@ -5,6 +5,7 @@ import controller.ProveedorController;
 import controller.VentaController;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 public class Menus {
 
@@ -53,7 +54,7 @@ public class Menus {
             case 1:
             // agregar empleado
             String nombre, codigo, nDocumento;
-            LocalDate nuevaFecha;
+            LocalDate fecha;
             System.out.println("POR FAVOR INGRESE LOS DATOS DEL NUEVO EMPLEADO:");
             System.out.println("Ingrese el nombre:");
             nombre = sc.nextLine();
@@ -62,10 +63,9 @@ public class Menus {
             System.out.println("Ingrese el numero de documento:");
             nDocumento = sc.nextLine();
             System.out.println("Ingrese la fecha de ingreso:");
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            nuevaFecha = LocalDate.parse(sc.nextLine(), formatter);
+            fecha = leerFecha();
 
-            ec.registrarEmpleado(nombre, codigo, nDocumento, nuevaFecha);
+            ec.registrarEmpleado(nombre, codigo, nDocumento, fecha);
             break;
 
             case 2:
@@ -82,18 +82,19 @@ public class Menus {
             break;
             case 4:
             // modificar empleado
+            String codigoBB, nuevoNombre, nuevoDocumento;
+            LocalDate nuevaFecha;
             System.out.println("Ingrese el codigo del empleado a modificar:");
-            codigo = sc.nextLine();
+            codigoBB = sc.nextLine();
             System.out.println("Ingrese el nuevo nombre:");
-            nombre = sc.nextLine();
+            nuevoNombre = sc.nextLine();
             System.out.println("Ingrese el nuevo codigo:");
             String nuevoCodigo = sc.nextLine();
             System.out.println("Ingrese el nuevo numero de documento:");
-            nDocumento = sc.nextLine();
+            nuevoDocumento = sc.nextLine();
             System.out.println("Ingrese la nueva fecha de ingreso:");
-            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            nuevaFecha = LocalDate.parse(sc.nextLine(), formato);            
-            ec.modificarEmpleado(codigo, nombre, nuevoCodigo, nDocumento, nuevaFecha);
+            nuevaFecha = leerFecha();         
+            ec.modificarEmpleado(codigoBB, nuevoNombre, nuevoCodigo, nuevoDocumento, nuevaFecha);
             break;
 
             case 5: 
@@ -138,9 +139,7 @@ public class Menus {
             stock = sc.nextInt();
             sc.nextLine();
             System.out.println("Ingrese la fecha de caducidad:");
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            caducidad = LocalDate.parse(sc.nextLine(), formatter);
-
+           caducidad = leerFecha();
             pc.agregarProducto(nombre, codigo, precio, stock, caducidad);
             break;
             case 2:
@@ -157,12 +156,13 @@ public class Menus {
             break;
             case 4:
             // modificar producto
+            String nuevoNombre, nuevoCodigo;
             System.out.println("Ingrese el codigo del producto a modificar:");
-            codigo = sc.nextLine();
+            String codigoo = sc.nextLine();
             System.out.println("Ingrese el nuevo nombre:");
-            nombre = sc.nextLine();
+            nuevoNombre = sc.nextLine();
             System.out.println("Ingrese el nuevo codigo:");
-            String nuevoCodigo = sc.nextLine();
+            nuevoCodigo = sc.nextLine();
             System.out.println("Ingrese el nuevo precio:");
             double nuevoPrecio = sc.nextDouble();
             sc.nextLine();
@@ -172,7 +172,7 @@ public class Menus {
             System.out.println("Ingrese la nueva fecha de caducidad:");
             DateTimeFormatter formatoo = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate nuevaCaducidad = LocalDate.parse(sc.nextLine(), formatoo);
-            pc.modificarProducto(codigo, nombre, nuevoCodigo, nuevoPrecio, nuevaCaducidad, nuevoStock);
+            pc.modificarProducto(codigoo, nuevoNombre, nuevoCodigo, nuevoPrecio, nuevaCaducidad, nuevoStock);
             break;
 
             case 5:
@@ -234,21 +234,21 @@ public class Menus {
                 case 4:
                 // modificar proveedor
                 System.out.println("Ingrese el codigo del proveedor a modificar:");
-                codigo = sc.nextLine();
+                String codigoo = sc.nextLine();
                 System.out.println("Ingrese el nuevo nombre:");
-                nombreProveedor = sc.nextLine();
+                String nuevNombreProveedor = sc.nextLine();
                 System.out.println("Ingrese el nuevo codigo:");
                 String nuevoCodigo = sc.nextLine();
                 System.out.println("Ingrese la nueva empresa:");
-                empresa = sc.nextLine();
+                String nuevEmpresa = sc.nextLine();
                 System.out.println("Ingrese el nuevo telefono:");
-                telefono = sc.nextLine();
+                String nuevTelefono = sc.nextLine();
                 System.out.println("Ingrese la nueva cantidad de productos ingresados:");
-                cantidadProductosIngresados = sc.nextInt();
+                int nuevCantidadProductosIngresados = sc.nextInt();
                 System.out.println("Ingrese la nueva categoria de productos:");
-                categoriaProductos = sc.nextLine();
+                String nuevCategoriaProductos = sc.nextLine();
                 sc.nextLine();
-                pc.modificarProveedor(codigo, nombreProveedor, nuevoCodigo, empresa, telefono, cantidadProductosIngresados, categoriaProductos);
+                pc.modificarProveedor(codigoo, nuevNombreProveedor, nuevoCodigo, nuevEmpresa, nuevTelefono, nuevCantidadProductosIngresados, nuevCategoriaProductos);
                 break;
                 case 5:
                 // listar proveedores
@@ -303,5 +303,18 @@ public class Menus {
                     break;
         }
         sc.close();
+    }
+    private LocalDate leerFecha() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.print("Ingrese la fecha (dd-MM-yyyy): ");
+                String fechaInput = sc.nextLine();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                return LocalDate.parse(fechaInput, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("⚠ Error: Formato de fecha incorrecto. Intente nuevamente con el formato dd-MM-yyyy.");
+            }
+        }
     }
 }

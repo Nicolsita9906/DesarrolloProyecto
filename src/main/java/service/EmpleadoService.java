@@ -1,7 +1,6 @@
 package service;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import modelos.Empleado;
 public class EmpleadoService {
 ArrayList<Empleado> empleados = new ArrayList<>();
@@ -39,13 +38,13 @@ public void agregarEmpleado(String nombreEmpleado, String codigo, String numeroD
             break;
         }
     }
-    public void modificarEmpleado (String codigo, String newName, String newCode, String newNumber, String newDate){
+    public void modificarEmpleado (String codigo, String newName, String newCode, String newNumber, LocalDate newDate){
         for (Empleado x: empleados){
             if (x.getCodigo().equals(codigo)){
                 x.setNombreEmpleado(newName);
                 x.setCodigo(newCode);
                 x.setNumeroDocuemento(newNumber);
-                x.setFechaIngreso(LocalDate.parse(newDate));
+                x.setFechaIngreso(newDate);
                 System.out.println("Empleado modificado" + x.toString());
                 
             }else{

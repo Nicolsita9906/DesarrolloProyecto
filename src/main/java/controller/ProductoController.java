@@ -1,6 +1,5 @@
 package controller;
 import java.time.LocalDate;
-
 import modelos.Producto;
 import service.ProductoService;
 public class ProductoController {
@@ -16,7 +15,7 @@ public class ProductoController {
     public void eliminarProducto(String codigo){
         servicio.eliminarProducto(codigo);
     }
-    public void modificarProducto(String codigo, String newName, String newCode, String newPrice, LocalDate newCaducity, String newStock){
+    public void modificarProducto(String codigo, String newName, String newCode, double newPrice, LocalDate newCaducity, int newStock){
         servicio.modificarProducto(codigo, newName, newCode, newPrice, newCaducity, newStock);
     }
     public void mostrarLista(){

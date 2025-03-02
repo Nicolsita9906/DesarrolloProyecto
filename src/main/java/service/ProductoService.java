@@ -1,7 +1,8 @@
 package service;
+import excepciones.StockBajo;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+import javax.swing.JOptionPane;
 import modelos.Producto;
 
 public class ProductoService {
@@ -33,14 +34,14 @@ public void buscarProducto(String codigo){
         }
     }
 
-    public void modificarProducto (String codigo, String newName, String newCode, String newPrice, LocalDate newCaducity, String newStock){
+    public void modificarProducto (String codigo, String newName, String newCode, double newPrice, LocalDate newCaducity, int newStock){
         for (Producto x: productos){
             if (x.getCodigo().equals(codigo)){
                 x.setNombre(newName);
-                x.setPrecio(Double.parseDouble(newPrice));
+                x.setPrecio(newPrice);
                 x.setCaducidad(newCaducity);
                 x.setCodigo(newCode);
-                x.setStock(Integer.parseInt(newStock));
+                x.setStock(newStock);
                 System.out.println("Producto modificado" + x.toString());
                 
             }else{
@@ -81,6 +82,20 @@ public void buscarProducto(String codigo){
             } 
         }
         return productos;
+    }
+    public void notificarStock () throws StockBajo{
+        for (Producto x: productos){
+            if (x.getStock() < 20){
+              try {
+                throw new StockBajo("El producto " + x.getNombre() + " tiene un stock menor a 20, llame al proveedor");
+              } catch (StockBajo e) {
+                  JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+              }
+                
+            }else{
+                System.out.println("Aun no se necesita suministrar productos");
+            }
+        }
     }
    
     

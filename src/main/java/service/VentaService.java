@@ -16,6 +16,7 @@ public void realizarVenta(LocalDate fecha, String codEmp, String codProd, int ca
     ventas.add(venta);
     productoServicio.restarProductos(cantidad, codProd);
     System.out.println("Venta realizada con exito!" + "$"+total);
+    productoServicio.notificarStock();
 }
 public void mostrarVentas(){
     for (Venta venta : ventas){

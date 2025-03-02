@@ -1,6 +1,5 @@
 package service;
 import java.util.ArrayList;
-
 import modelos.Proveedores;
 public class ProveedoresService {
     ArrayList<Proveedores> proveedores = new ArrayList<>();
@@ -38,14 +37,14 @@ public class ProveedoresService {
             break;
         }
     }
-    public void modificarProveedor(String codigo, String newName, String newCode, String newEmpresa, String newTelefono, String newCantidad, String newCategoria){
+    public void modificarProveedor(String codigo, String newName, String newCode, String newEmpresa, String newTelefono, int newCantidad, String newCategoria){
         for(Proveedores proveedor : proveedores){
             if(proveedor.getCodigo().equals(codigo)){
                 proveedor.setNombreProveedor(newName);
                 proveedor.setCodigo(newCode);
                 proveedor.setEmpresa(newEmpresa);
                 proveedor.setTelefono(newTelefono);
-                proveedor.setCantidadProductosIngresados(Integer.parseInt(newCantidad));
+                proveedor.setCantidadProductosIngresados(newCantidad);
                 proveedor.setCategoriaProductos(newCategoria);
                 System.out.println("Proveedor modificado con exito");
             }else{

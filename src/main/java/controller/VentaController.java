@@ -10,7 +10,7 @@ public class VentaController {
         ventaService.realizarVenta(fecha, codEmp, codProd, cantidad);
     }
     
-    public void generarReporte() {
+    public void mostrarVentas() {
         ventaService.mostrarVentas();
     }
 }

@@ -1,6 +1,5 @@
 package controller;
 import java.time.LocalDate;
-
 import service.EmpleadoService;
 
 public class EmpleadoController {
@@ -15,7 +14,7 @@ public void buscarEmpleado(String codigo){
 public void eliminarEmpleado(String codigo){
     servicio.eliminarEmpleado(codigo);
 }
-public void modificarEmpleado(String codigo, String newName, String newCode, String newNumber, String newDate){
+public void modificarEmpleado(String codigo, String newName, String newCode, String newNumber, LocalDate newDate){
     servicio.modificarEmpleado(codigo, newName, newCode, newNumber, newDate);
     }
     public void mostrarLista(){

@@ -11,7 +11,7 @@ public class ProveedorController {
     public void buscarProveedor(String codigo){
         servicio.buscarProveedres(codigo);
     }
-    public void modificarProveedor(String codigo, String newName, String newCode, String newEmpresa, String newTelefono, String newCantidad, String newCategoria){
+    public void modificarProveedor(String codigo, String newName, String newCode, String newEmpresa, String newTelefono, int newCantidad, String newCategoria){
         servicio.modificarProveedor(codigo, newName, newCode, newEmpresa, newTelefono, newCantidad, newCategoria);
     }
     public void mostrarLista(){

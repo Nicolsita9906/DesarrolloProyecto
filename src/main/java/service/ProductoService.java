@@ -8,25 +8,25 @@ import javax.swing.JOptionPane;
 import modelos.Producto;
 
 public class ProductoService {
-    private ArrayList<Producto> productos = new ArrayList<>();
+    ArrayList<Producto> productos = new ArrayList<>();
 
     public Producto agregarProducto(String nombre, String codigo, double precio, int stock, LocalDate caducidad) {
         Producto producto = new Producto(nombre, codigo, precio, caducidad, stock);
-        productos.add(producto);
         System.out.println("Producto agregado con éxito: " + producto.toString());
+        this.productos.add(producto);
         return producto;
     }
 
     public void buscarProducto(String codigo) {
         boolean encontrado = false;
-        for (Producto x : productos) {
+        for (Producto x : this.productos) {
             if (x.getCodigo().equals(codigo)) {
                 System.out.println("Producto encontrado: " + x.toString());
                 encontrado = true;
                 break;
             }
         }
-        if (!encontrado) {
+        if (!encontrado){
             System.out.println("El código no existe en el sistema");
         }
     }
@@ -95,7 +95,7 @@ public class ProductoService {
                 System.out.println(x);
             }
         }
-        return productos;
+        return this.productos;
     }
 
     public void notificarStock() {

@@ -10,7 +10,13 @@ import java.util.Scanner;
 public class Menus {
 
     public void menu(){
+        EmpleadoController ec = new EmpleadoController();
+        ProductoController pc = new ProductoController();
+        ProveedorController prc = new ProveedorController();
+        VentaController vc = new VentaController();
+
         int opcion;
+        do{
         Scanner sc = new Scanner(System.in);
         System.out.println("BIENVENIDO AL MENÚ DE GESTION DE SUPERMERCADO, POR FAVOR ELIGA UNA DE LAS SIGUIENTES OPCIONES \n"
         + "1. Gestión de Productos\n"
@@ -21,29 +27,27 @@ public class Menus {
 
         opcion = sc.nextInt();
         sc.nextLine();
+        
         switch(opcion){
             case 1:
-            gestionDeProductos();
+            gestionDeProductos(pc);
             break;
                     
             case 2:
-               gestionDeEmpleado();
+               gestionDeEmpleado(ec);
                 break;
             case 3:
-                gestionDeProveedor();
+                gestionDeProveedor(prc);
                 break;
             case 4:
-                gestionDeVentas();
+                gestionDeVentas(vc);
                 break;
-                default:
-                    System.out.println("Opción incorrecta");
-                    break;
-        }
-        sc.close();
+            }
+        } while (opcion != 5);
     }
-    public void gestionDeEmpleado (){
+    public void gestionDeEmpleado ( EmpleadoController ec){
         int x;
-        EmpleadoController ec = new EmpleadoController();
+        do{
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el numero de la opcion que desea realizar:\n" + "1. Agregar empleado\n" +
         "2. Buscar empleado\n" + "3. Eliminar empleado\n" + "4. Modificar empleado\n" + "5. Listar empleados\n" +
@@ -105,21 +109,20 @@ public class Menus {
             // regresar al menu principal
             menu();
             break;
-            default:
-                    System.out.println("Opción incorrecta");
-                    break;
-            }
-        sc.close();
-    }
-    public void gestionDeProductos(){
+        }
+    }while (x != 7);
+        
+}
+    public void gestionDeProductos( ProductoController pc){
         int x;
-        ProductoController pc = new ProductoController();
+        do{
         Scanner sc = new Scanner(System.in);
         System.out.println("POR FAVOR INGRESE EL NUMERO DE LA OPCION QUE NECESITA:\n" + "1. Agregar producto\n" +
         "2. Buscar producto\n" +  "3. Eliminar producto\n" + "4. Modificar producto\n" + "5. Listar productos\n" + 
         "6. Regresar al menu principal");
         x = sc.nextInt();
         sc.nextLine();
+    
         switch(x){
             case 1:
             // agregar producto
@@ -187,17 +190,20 @@ public class Menus {
                     System.out.println("Opción incorrecta");
                     break;
         }
-        sc.close();
-    }
-        public void gestionDeProveedor(){
+    
+    }while (x != 7);
+}
+        public void gestionDeProveedor(ProveedorController prc){
             int x;
-            ProveedorController pc = new ProveedorController();
+            do {
+           
             Scanner sc = new Scanner(System.in);
             System.out.println("POR FAVOR INGRESE EL NUMERO DE LA OPCION QUE NECESITA:\n" + "1. Agregar proveedor\n" + 
             "2. Buscar proveedor\n" + "3. Eliminar proveedor\n" + "4. Modificar proveedor\n" + "5. Listar proveedores\n" +
             "6. Regresar al menu principal");
             x = sc.nextInt();
             sc.nextLine();
+            
             switch(x){
                 case 1:
                 // agregar proveedor
@@ -217,19 +223,19 @@ public class Menus {
                 sc.nextLine();
                 System.out.println("Ingrese la categoria de productos:");
                 categoriaProductos = sc.nextLine();
-                pc.registrarProveedor(nombreProveedor, codigo, empresa, telefono, cantidadProductosIngresados, categoriaProductos);
+                prc.registrarProveedor(nombreProveedor, codigo, empresa, telefono, cantidadProductosIngresados, categoriaProductos);
                 break;
                 case 2:
                 // buscar proveedor
                 System.out.println("Ingrese el codigo del proveedor a buscar:");
                 codigo = sc.nextLine();
-                pc.buscarProveedor(codigo);
+                prc.buscarProveedor(codigo);
                 break;
                 case 3:
                 // eliminar proveedor
                 System.out.println("Ingrese el codigo del proveedor a eliminar:");
                 codigo = sc.nextLine();
-                pc.eliminarProveedor(codigo);
+                prc.eliminarProveedor(codigo);
                 break;
                 case 4:
                 // modificar proveedor
@@ -248,30 +254,28 @@ public class Menus {
                 System.out.println("Ingrese la nueva categoria de productos:");
                 String nuevCategoriaProductos = sc.nextLine();
                 sc.nextLine();
-                pc.modificarProveedor(codigoo, nuevNombreProveedor, nuevoCodigo, nuevEmpresa, nuevTelefono, nuevCantidadProductosIngresados, nuevCategoriaProductos);
+                prc.modificarProveedor(codigoo, nuevNombreProveedor, nuevoCodigo, nuevEmpresa, nuevTelefono, nuevCantidadProductosIngresados, nuevCategoriaProductos);
                 break;
                 case 5:
                 // listar proveedores
-                pc.mostrarLista();
+                prc.mostrarLista();
                 break;
                 case 6:
                 // regresar al menu principal
                 menu();
                 break;
-                default:
-                    System.out.println("Opción incorrecta");
-                    break;
-        }
-        sc.close();
+            }
+        } while (x != 7);
     }
-            public void gestionDeVentas(){
+            public void gestionDeVentas(VentaController vc){
                 int x;
-                VentaController vc = new VentaController();
+                do {
                 Scanner sc = new Scanner(System.in);
                 System.out.println("POR FAVOR INGRESE EL NUMERO DE LA OPCION QUE NECESITA:\n" + "1. Registrar venta\n" +
                  "2. Generar reporte\n" + "3. Regresar al menu principal");
                 x = sc.nextInt();
                 sc.nextLine();
+                
                 switch(x){
                     case 1:
                     // registrar venta
@@ -298,11 +302,8 @@ public class Menus {
                     // regresar al menu principal
                     menu();
                     break;
-                    default:
-                    System.out.println("Opción incorrecta");
-                    break;
-        }
-        sc.close();
+            }
+        } while (x != 4);
     }
     private LocalDate leerFecha() {
         Scanner sc = new Scanner(System.in);

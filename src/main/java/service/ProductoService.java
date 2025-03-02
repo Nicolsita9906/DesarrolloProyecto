@@ -17,18 +17,18 @@ public class ProductoService {
         return producto;
     }
 
-    public void buscarProducto(String codigo) {
+    public  Producto buscarProducto(String codigo) {
         boolean encontrado = false;
         for (Producto x : this.productos) {
             if (x.getCodigo().equals(codigo)) {
                 System.out.println("Producto encontrado: " + x.toString());
                 encontrado = true;
-                break;
+                return x;
             }
         }
-        if (!encontrado){
             System.out.println("El código no existe en el sistema");
-        }
+            return null;
+        
     }
 
     public void eliminarProducto(String codigo) {

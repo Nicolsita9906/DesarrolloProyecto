@@ -40,7 +40,7 @@ public class Menus {
                 gestionDeProveedor(prc);
                 break;
             case 4:
-                gestionDeVentas(vc);
+                gestionDeVentas(vc, ec, pc);
                 break;
             }
         } while (opcion != 5);
@@ -267,7 +267,7 @@ public class Menus {
             }
         } while (x != 7);
     }
-            public void gestionDeVentas(VentaController vc){
+            public void gestionDeVentas(VentaController vc,EmpleadoController ec, ProductoController pc){
                 int x;
                 do {
                 Scanner sc = new Scanner(System.in);
@@ -292,7 +292,7 @@ public class Menus {
                     sc.nextLine();
                     System.out.println("Ingrese la fecha de la venta:");
                     fechaVenta = LocalDate.parse(sc.nextLine());
-                    vc.registrarVenta(fechaVenta, codigoEmpleado, codigoProducto, cantidad);
+                    vc.registrarVenta(fechaVenta, codigoEmpleado, codigoProducto, cantidad, ec, pc);
                     break;
                     case 2:
                     // generar reporte

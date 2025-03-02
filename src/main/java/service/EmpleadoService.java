@@ -10,7 +10,7 @@ public class EmpleadoService {
     public void agregarEmpleado(String nombreEmpleado, String codigo, String numeroDocumento, LocalDate fechaIngreso) {
         for (Empleado empleado : empleados) {
             if (empleado.getCodigo().equals(codigo) && empleado.getNumeroDocuemento().equals(numeroDocumento)) {
-                System.out.println("El código o identificación ya existe en el sistema");
+                        System.out.println("El código o identificación ya existe en el sistema");
                 return; 
             }
         }
@@ -20,18 +20,18 @@ public class EmpleadoService {
         System.out.println("Empleado agregado con éxito");
     }
 
-    public void buscarEmpleado(String codigo) {
+    public Empleado buscarEmpleado(String codigo) {
         boolean encontrado = false;
         for (Empleado x : empleados) {
             if (x.getCodigo().equals(codigo)) {
                 System.out.println("Empleado encontrado: " + x.toString());
                 encontrado = true;
-                break; 
+                return x;
             }
         }
-        if (!encontrado) {
+       
             System.out.println("El código no existe en el sistema");
-        }
+            return null;
     }
 
     public void eliminarEmpleado(String codigo) {

@@ -9,8 +9,8 @@ public class ProductoController {
     public Producto agregarProducto(String nombre, String codigo, double precio, int stock, LocalDate caducidad){
         return servicio.agregarProducto(nombre, codigo, precio, stock, caducidad);
     }
-    public void buscarProducto(String codigo){
-        servicio.buscarProducto(codigo);
+    public Producto buscarProducto(String codigo){
+       return servicio.buscarProducto(codigo);
     }
     public void eliminarProducto(String codigo){
         servicio.eliminarProducto(codigo);
@@ -20,5 +20,14 @@ public class ProductoController {
     }
     public void mostrarLista(){
         servicio.mostrarProductos();
+    }
+    public void notificarStock(){
+        servicio.notificarStock();
+    }
+    public void restarProductos(int cantidad, String codigo){
+         servicio.restarProductos(cantidad, codigo);
+    }
+    public double calcularTotalVenta(String codProd, int cantidad){
+        return servicio.calcularTotalVenta(codProd, cantidad);
     }
 }

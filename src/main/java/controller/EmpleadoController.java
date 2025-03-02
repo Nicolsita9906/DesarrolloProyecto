@@ -1,5 +1,6 @@
 package controller;
 import java.time.LocalDate;
+import modelos.*;
 import service.EmpleadoService;
 
 public class EmpleadoController {
@@ -8,8 +9,8 @@ EmpleadoService servicio = new EmpleadoService();
 public void registrarEmpleado(String nombreEmpleado, String codigo, String numeroDocuemento, LocalDate fechaIngreso){
     servicio.agregarEmpleado(nombreEmpleado, codigo, numeroDocuemento, fechaIngreso);
 }
-public void buscarEmpleado(String codigo){
-    servicio.buscarEmpleado(codigo);
+public Empleado buscarEmpleado(String codigo){
+   return servicio.buscarEmpleado(codigo);
     }
 public void eliminarEmpleado(String codigo){
     servicio.eliminarEmpleado(codigo);
